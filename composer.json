@@ -1,0 +1,24 @@
+{
+	"name": "drinkust/kust",
+	"type": "library",
+	"description": "MVC system for Drinkust project",
+	"keywords": ["mvc"],
+	"homepage": "https://drinkust.com",
+	"license": "LGPL-3.0",
+
+	"authors": [
+		{
+			"name": "Benoit Zuckschwerdt",
+			"email": "benoit.zuckschwerdt@gmail.com"
+		}
+	],
+
+	"require": {
+		"php": ">=5.2.4"
+	},
+	"autoload": {
+		"psr-0": {
+			"Kust_": "app/"
+		}
+	}
+}
