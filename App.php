@@ -18,7 +18,8 @@ if( !defined( "IN_SITE" ) ){
 
 class Kust_App
 {
-	private static $frameworkName = 'DubGigaFisherMaster Framework version 0.1';
+	private static $frameworkName = 'Sample Framework';
+	private static $frameworkVersion = '0.0.0';
 
 	public $uri;
 
@@ -63,6 +64,15 @@ class Kust_App
 	 */
 	public function getFrameworkName() {
 		return self::$frameworkName;
+	}
+	
+	
+	/**
+	 * Get Framework version
+	 * @return string
+	 */
+	public function getFrameworkVersion() {
+		return self::$frameworkVersion;
 	}
 }
 ?>
