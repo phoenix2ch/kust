@@ -17,7 +17,7 @@ class Kust_Controller {
 
 
 	public function loadModel($model) {
-		require_once(dirname(__FILE__).'/models/'. $model .'.model.php' );
+		require_once(P_ROOT.'/app/models/'. $model .'.model.php' );
 		return new $model;
 	}
 
