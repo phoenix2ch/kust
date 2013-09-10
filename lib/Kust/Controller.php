@@ -28,7 +28,7 @@ class Kust_Controller {
 
 		if($bAjax === false) {
 
-			$oView = new DubSmarty;
+			$oView = new Smarty;
 
 			# Add view choice by controller
 			$oView->assign('contentView', $sView);
