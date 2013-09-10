@@ -1,7 +1,7 @@
 {
 	"name": "drinkust/kust",
 	"type": "library",
-	"description": "PHP MVC system",
+	"description": "Simple PHP MVC system with a few tools",
 	"keywords": ["mvc"],
 	"homepage": "https://github.com/phoenix2ch/",
 	"license": "LGPL-3.0",
