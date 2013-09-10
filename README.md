@@ -9,7 +9,7 @@ Simple PHP MVC system with a few tools:
   - String manipulation class
   - Breadcrumb class
   - Mail class
-  - User management (in dev)
+  - ACL system
   - Plugin system (in dev)
 
 
