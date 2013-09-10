@@ -1,7 +1,7 @@
 <?php
 /**
-* MYSQL
-* mysql.class.php
+* MYSQL class
+* Kust/Mysql.php
 *
 * --------------------
 * Author:	Benoit Zuckschwerdt, @ 28.10.2010
