@@ -17,7 +17,7 @@ class Kust_Controller {
 
 
 	public function loadModel($model) {
-		require_once(__DIR__.'/app/models/'. $model .'.model.php' );
+		require_once(dirname(__FILE__).'/models/'. $model .'.model.php' );
 		return new $model;
 	}
 
@@ -26,9 +26,12 @@ class Kust_Controller {
 		//if(is_array($vars) && count($vars) > 0) extract($vars, EXTR_PREFIX_SAME, "wddx");
 		//require_once(__DIR__.'/app/views/'.$view.'.html' );
 
+
+        $oView = new Smarty;
 		if($bAjax === false) {
 
-			$oView = new Smarty;
+			# Set templates dir
+			$oView->setTemplateDir(SMARTY_TEMPLATE_DIR);
 
 			# Add view choice by controller
 			$oView->assign('contentView', $sView);
@@ -38,7 +41,12 @@ class Kust_Controller {
 			$oView->assign('styles', $GLOBALS['styles']);
 			$oView->assign('less', $GLOBALS['less']);
 			$oView->assign('scripts', $GLOBALS['scripts']);
-			$oView->assign('navs', $GLOBALS['navs']);
+			$oView->assign('navs', $GLOBALS['navs'][(!empty($_SESSION['user']) ? 'connected' : 'public')]);
+			$oView->assign('alpha_list', $GLOBALS['alpha_list']);
+
+			# Breadcrump
+		    $oView->assign('trail', $GLOBALS['trail']->path);
+
 
 			# Open Graph Protocol
 			$oView->assign('og', $GLOBALS['og']);
@@ -46,11 +54,21 @@ class Kust_Controller {
 			# Data not in content (for zero notice)
 			if(empty($aData['errorMessages'])) $aData['errorMessages'] = array();
 			if(empty($aData['successMessages'])) $aData['successMessages'] = array();
+			if(empty($aData['infoMessages'])) $aData['infoMessages'] = array();
+
+			$oView->assign('pre', 'on');
+			$oView->assign('header', 'on');
+			$oView->assign('js_end', 'on');
+			$oView->assign('nav', 'on');
+			$oView->assign('footer', 'on');
+			$oView->assign('post', 'on');
 
 			# Assign data send by controller
 			foreach($aData as $key => $value)
 				$oView->assign($key, $value);
 
+            # Is logged?
+			$oView->assign('logged', !empty($_SESSION['user']));
 			$oView->display('index.html');
 
 		} else {
@@ -60,7 +78,7 @@ class Kust_Controller {
 
 
 	public function redirect( $uri ) {
-		header( "Location: ?r=$uri" );
+		header( "Location: ".URL."$uri" );
 
 		die();
 	}
