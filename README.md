@@ -1,4 +1,4 @@
-kust
+Kust
 ====
 
-PHP MVC system
+Simple PHP MVC system (used with Smarty)
