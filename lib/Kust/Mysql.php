@@ -84,7 +84,7 @@ class Kust_Mysql {
 	public function query($sSqlQuery) {
 		$sSqlQuery = $this->translate($sSqlQuery);
 		$this->res = mysql_query($sSqlQuery, $this->rid) or die(mysql_error());
-		return new Kust_resource($this->res);
+		return new Kust_Resource($this->res);
 	}
 	
 	
