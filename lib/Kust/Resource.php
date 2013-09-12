@@ -11,7 +11,7 @@
  *
  **/
 
-class Kust_resource{
+class Kust_Resource{
 	private $res;
 	
 	function __construct($res) {
