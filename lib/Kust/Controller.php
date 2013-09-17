@@ -28,46 +28,47 @@ class Kust_Controller {
 
 
         $oView = new Smarty;
-		if($bAjax === false) {
+        
+        # Set templates dir
+	$oView->setTemplateDir(SMARTY_TEMPLATE_DIR);
+	
+	if($bAjax === false) {
 
-			# Set templates dir
-			$oView->setTemplateDir(SMARTY_TEMPLATE_DIR);
+		# Add view choice by controller
+		$oView->assign('contentView', $sView);
 
-			# Add view choice by controller
-			$oView->assign('contentView', $sView);
+		$oView->assign('langage', LANG);
+		$oView->assign('meta', $GLOBALS['meta']);
+		$oView->assign('styles', $GLOBALS['styles']);
+		$oView->assign('less', $GLOBALS['less']);
+		$oView->assign('scripts', $GLOBALS['scripts']);
+		$oView->assign('navs', $GLOBALS['navs'][(!empty($_SESSION['user']) ? 'connected' : 'public')]);
+		$oView->assign('alpha_list', $GLOBALS['alpha_list']);
 
-			$oView->assign('langage', LANG);
-			$oView->assign('meta', $GLOBALS['meta']);
-			$oView->assign('styles', $GLOBALS['styles']);
-			$oView->assign('less', $GLOBALS['less']);
-			$oView->assign('scripts', $GLOBALS['scripts']);
-			$oView->assign('navs', $GLOBALS['navs'][(!empty($_SESSION['user']) ? 'connected' : 'public')]);
-			$oView->assign('alpha_list', $GLOBALS['alpha_list']);
-
-			# Breadcrump
-		    $oView->assign('trail', $GLOBALS['trail']->path);
+		# Breadcrump
+		$oView->assign('trail', $GLOBALS['trail']->path);
 
 
-			# Open Graph Protocol
-			$oView->assign('og', $GLOBALS['og']);
+		# Open Graph Protocol
+		$oView->assign('og', $GLOBALS['og']);
 
-			# Data not in content (for zero notice)
-			if(empty($aData['errorMessages'])) $aData['errorMessages'] = array();
-			if(empty($aData['successMessages'])) $aData['successMessages'] = array();
-			if(empty($aData['infoMessages'])) $aData['infoMessages'] = array();
+		# Data not in content (for zero notice)
+		if(empty($aData['errorMessages'])) $aData['errorMessages'] = array();
+		if(empty($aData['successMessages'])) $aData['successMessages'] = array();
+		if(empty($aData['infoMessages'])) $aData['infoMessages'] = array();
 
-			$oView->assign('pre', 'on');
-			$oView->assign('header', 'on');
-			$oView->assign('js_end', 'on');
-			$oView->assign('nav', 'on');
-			$oView->assign('footer', 'on');
-			$oView->assign('post', 'on');
+		$oView->assign('pre', 'on');
+		$oView->assign('header', 'on');
+		$oView->assign('js_end', 'on');
+		$oView->assign('nav', 'on');
+		$oView->assign('footer', 'on');
+		$oView->assign('post', 'on');
 
-			# Assign data send by controller
-			foreach($aData as $key => $value)
-				$oView->assign($key, $value);
+		# Assign data send by controller
+		foreach($aData as $key => $value)
+			$oView->assign($key, $value);
 
-            # Is logged?
+            # Is logged ?
 			$oView->assign('logged', !empty($_SESSION['user']));
 			$oView->display('index.html');
 
