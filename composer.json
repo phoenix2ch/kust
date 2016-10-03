@@ -3,13 +3,13 @@
 	"type": "library",
 	"description": "Simple PHP MVC system with a few tools",
 	"keywords": ["mvc"],
-	"homepage": "https://github.com/phoenix2ch/",
+	"homepage": "https://github.com/xajkep/kust",
 	"license": "LGPL-3.0",
 
 	"authors": [
 		{
 			"name": "Benoit Zuckschwerdt",
-			"email": "benoit.zuckschwerdt@gmail.com"
+			"email": "benoit.zuckschwerdt (at) gmail.com"
 		}
 	],
 
